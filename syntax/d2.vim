@@ -2,7 +2,7 @@ if exists('b:current_syntax')
   finish
 endif
 
-call d2()
+call d2#init_syn()
 
 " This only marks errors where additional input after the error will not fix the error.
 " Thus it's not constantly marking things as errors while you type but only errors you
