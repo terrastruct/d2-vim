@@ -1,0 +1,82 @@
+*d2.txt*                                         suppport for d2 diagram files
+
+                                  *d2-vim*
+
+==============================================================================
+CONTENTS                                                          *d2-contents*
+
+1. Introduction               (|d2-intro|)
+2. Settings                   (|d2-settings|)
+
+==============================================================================
+INTRO                                                                *d2-intro*
+
+The Vim plugin for .d2 files.
+
+See https://d2-lang.com
+
+==============================================================================
+SETTINGS                                                          *d2-settings*
+
+                                                   *g:d2_block_string_syntaxes*
+
+This option declares a map from vim syntax names to the tags that |d2-vim|
+should enable each within block strings.
+
+Default: >
+  let g:d2_block_string_syntaxes = {
+        \ 'd2': ['d2'],
+        \ 'markdown': ['md', 'markdown'],
+        \ 'javascript': ['javascript', 'js'],
+        \ 'html': ['html'],
+        \ 'json': ['json'],
+        \ 'c': ['c'],
+        \ 'go': ['go'],
+        \ 'sh': ['sh', 'ksh', 'bash'],
+        \ 'css': ['css'],
+        \ 'vim': ['vim'],
+        \ }
+<
+Example: >
+  x: |`js let x = 3 `|
+<
+To extend the default with another syntax, say TypeScript: >
+  let g:d2_block_string_syntaxes = {'typescript': ['typescript', 'ts']}
+<
+Now the following block strings will have syntax highlighting: >
+  x: |`typescript let x = 3 `|
+  x: |`ts let x = 3 `|
+
+To extend the default with another tag on a syntax, say html: >
+  let g:d2_block_string_syntaxes = {'html': ['htm']}
+<
+Now the following block string will have HTML syntax highlighting: >
+  x: |`htm <html> hello world </html> `|
+
+The user value of |g:d2_block_string_syntaxes| is merged with the default so
+the following block strings continue to have syntax highlighting: >
+  x: |`js let x = 3 `|
+  x: |`html <html> hello world </html> `|
+<
+To disable block string syntaxes: >
+  let g:d2_block_string_syntaxes = v:false
+<
+The value of |g:markdown_fenced_languages| is automatically synced with
+|g:d2_block_string_syntaxes|. See https://github.com/tpope/vim-markdown for
+documentation on |g:markdown_fenced_languages|.
+
+note: In markdown block strings, |d2-vim| disables indented code blocks
+  highlighting as there's no way to make markdown.vim aware of the indent of
+  the block string and so it ends up wrongly highlighting 4 space indent block
+  strings as indented code blocks.
+
+  Indented code blocks are rarely used anyway.
+  You almost always want to use a fenced code block instead.
+  See https://spec.commonmark.org/0.30/#indented-code-blocks
+  See https://spec.commonmark.org/0.30/#fenced-code-blocks
+
+note: Line continuations are known to be buggy within fenced d2 code blocks
+  of top level markdown files.
+
+==============================================================================
+ vim: ft=help tw=78 et ts=2 sw=0 sts=0 fo-=t norl

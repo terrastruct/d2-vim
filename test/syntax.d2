@@ -1,0 +1,154 @@
+  first: val
+# test for syntax/d2.vim
+
+x: 1, y: 2
+
+x: null
+x: null #comment
+x: true
+x: true3
+x: false
+x: xfalse
+x: 5e3
+x: 123.
+x: meow234
+imports: mdkalsmdksal
+imports343: mdkalsmdksal
+
+unquoted_str: hello
+unquoted_str_err: hello `mdlkamdskl`
+unquoted_str_escape: \
+  3434343
+single_quote_escapes: 'testing\
+  before''dsdsafter\'
+double_quote_escapes: "\"damdkslamadkls\" dmasldkasl"
+
+'one''two'.three -> xd
+"err""2".3 -> xd
+
+# nested-markdown-block-string-test
+x -> y
+y: |`md
+  # d2-vim
+  The Vim plugin for [D2](https://d2-lang.com) files.
+  ```d2
+  x -> y
+  y: |`md
+    # d2-vim
+    The Vim plugin for [D2](https://d2-lang.com) files.
+    ```d2
+    x -> y
+    y: |`md
+      # d2-vim
+      The Vim plugin for [D2](https://d2-lang.com) files.
+    `|
+    ```
+  `|
+  ```
+`|
+
+x -> y
+y: |`d2
+  x -> y
+  y: |`d2
+    x -> y
+    y: |`d2
+      x -> y
+      y: |`d2
+      `|
+    `|
+  `|
+`|
+
+x: |`html <html> hello world </html> `|
+
+x: [1,2,3]
+x: [first,second,third]
+
+x: ${ok}
+
+oneline: |`'!@#$%^&*()testing bark`|
+oneline: |`'!@#$%^&*()testing bark `|
+oneline_err: |`'!@#$%^&*()testing|bark `|
+
+ok: null less
+ok: something
+
+(x -> y)[34]: label
+o*ne&err ** &three -> &work: label
+err: 232 false [
+err: ]
+
+double_map_err: dbl {} {}
+string_after_map_err: {} "dsamkdlas"
+
+subst: some body once told me ${wsup} on a good friday morning
+subst: ${wsup} on a good friday morning
+subst_err: $dmaslkdas
+
+&(x -> y)[0]: should work
+&class: *match*
+
+key_val_err: dasmkdasm ] dmlkas
+
+arr: [${yes}]
+
+one,\
+  two: three
+
+two_err\
+  &two
+two_err.\
+  &two
+&dsamkldaskl
+
+\
+  err_sc
+esc \
+  esc
+
+ok_err: esc \
+  [arr]
+wow.\
+  &ok
+wow_err: dsamdlas \
+  { dmaklsmdakls }
+"ok" --\
+  -- dasklmmdklas
+"ok_err" -\x
+-- dasklmmdklas
+
+ok: \
+  {}
+ok: \
+  []
+ok: \
+  []
+
+meow --> \
+  "dmlsakdksmal"
+
+err.
+.err
+err: { .err }
+
+ok.*.*: yes
+
+ok.s\
+  .ok: mlkdasmdlkas
+ok_err.s \
+  .ok: mlkdasmdlkas
+
+\
+single_slash_err
+
+x\\: ok
+& --> ok
+bad -- --
+
+ok: {
+  Static resources."icons.terrastruct.com" --\
+    -> Frontend."app.terrastruct.com"
+  2 --\
+    2-> 2
+}
