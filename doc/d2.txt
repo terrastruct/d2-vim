@@ -13,7 +13,7 @@ INTRO                                                                *d2-intro*
 
 The Vim plugin for .d2 files.
 
-See https://d2-lang.com
+See https://d2lang.com
 
 ==============================================================================
 SETTINGS                                                          *d2-settings*

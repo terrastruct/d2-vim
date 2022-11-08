@@ -3,7 +3,7 @@
     <img src="./logo.svg" alt="D2" />
   </h1>
 
-The Vim plugin for [D2](https://d2-lang.com) files.
+The Vim plugin for [D2](https://d2lang.com) files.
 <br />
 <br />
 </div>
@@ -25,6 +25,6 @@ x -> y
 # d2-vim can syntax highlight nested markdown correctly.
 y: |`md
   # d2-vim
-  The Vim plugin for [D2](https://d2-lang.com) files.
+  The Vim plugin for [D2](https://d2lang.com) files.
 `|
 ```
