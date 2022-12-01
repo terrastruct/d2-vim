@@ -60,7 +60,7 @@ syn region d2KeyQuotedSingle matchgroup=d2Delimiter start=/\%([,{.\->*&(]\%(\s*\
 syn region d2KeyQuotedDouble matchgroup=d2Delimiter start=/\%([,{.\->*&(]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\)\@<="/    end=/"\|\n\@=/  contains=@d2EscapeKey
 syn region d2KeyGroup        matchgroup=d2Delimiter start=/\%([,{.\->*&(]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\)\@<=(/    end=/)\|\n\@=/  contains=d2Error,d2LineContinuation,@d2Key
 syn region d2KeyIndex        matchgroup=d2Delimiter start=/)\@<=\[/                                                end=/\]\|\n\@=/ contains=d2Error,d2LineContinuation,@d2Number
-syn match  d2KeyReserved     /\%(type\|layer\|hidden\|class\|label\|tooltip\|style\|icon\|constraint\|near\|opacity\|stroke\|fill\|filled\|stroke\-width\|width\|height\|border\-radius\|source\-arrowhead\|target\-arrowhead\|link\|stroke\-dash\|font\-size\|font\-color\|shadow\|multiple\|3d\|animated\|shape\|imports\|vars\|scenarios\|on_click\|src\|dst\)\%(\s*[\n#,[\]{}|`$'"\\:.\-<>*&()]\)\@=/
+syn match  d2KeyReserved     /\%(type\|layer\|hidden\|class\|label\|tooltip\|style\|icon\|constraint\|near\|opacity\|stroke\|fill\|filled\|stroke\-width\|stroke\-dash\|width\|height\|border\-radius\|source\-arrowhead\|target\-arrowhead\|link\|stroke\-dash\|font\-size\|font\-color\|shadow\|multiple\|3d\|animated\|shape\|imports\|vars\|scenarios\|on_click\|src\|dst\|direction\)\%(\s*[\n#,[\]{}|`$'"\\:.\-<>*&()]\)\@=/
 
 hi def link d2KeyUnquoted     d2Identifier
 hi def link d2KeyQuotedSingle d2Identifier
