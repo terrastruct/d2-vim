@@ -17,12 +17,12 @@ syn region d2Error start=/\S/ end=/\%(\s*\n\)\@=/
 "
 " Keep the following delimiters in mind when making changes:
 "
-" top: \n#,[]{}
+" top: \n#;[]{}
 " val: |`$'"\
 " key: :.-<>*&()
 "
-" vals regex: [\n#,[\]{}|`$'"\\]
-" keys regex: [\n#,[\]{}|`$'"\\:.\-<>*&()]
+" vals regex: [\n#;[\]{}|`$'"\\]
+" keys regex: [\n#;[\]{}|`$'"\\:.\-<>*&()]
 "
 " The main differences between Oniguruma and VimL regexes:
 " - Lookahead and lookbehind syntax
@@ -36,9 +36,9 @@ syn region d2Error start=/\S/ end=/\%(\s*\n\)\@=/
 " @d2String
 " ********************************************************************************
 
-syn region d2StringUnquoted start=/\%([,[{:]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\)\@<=\%([^[:space:]\n#,[\]{}|`$'"\\]\|\${\)/ end=/\%(\s*[\n#,[\]{}|`'"]\)\@=/ contains=d2Substitution,@d2Escape contained
-syn region d2StringQuotedSingle matchgroup=d2Delimiter start=/\%([,[{:]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|'\)\@<='/ end=/'\|\n\@=/ contains=d2LineContinuation        contained
-syn region d2StringQuotedDouble matchgroup=d2Delimiter start=/\%([,[{:]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\)\@<="/    end=/"\|\n\@=/ contains=d2Substitution,@d2Escape contained
+syn region d2StringUnquoted start=/\%([;[{:]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\)\@<=\%([^[:space:]\n#;[\]{}|`$'"\\]\|\${\)/ end=/\%(\s*[\n#;[\]{}|`'"]\)\@=/ contains=d2Substitution,@d2Escape contained
+syn region d2StringQuotedSingle matchgroup=d2Delimiter start=/\%([;[{:]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|'\)\@<='/ end=/'\|\n\@=/ contains=d2LineContinuation        contained
+syn region d2StringQuotedDouble matchgroup=d2Delimiter start=/\%([;[{:]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\)\@<="/    end=/"\|\n\@=/ contains=d2Substitution,@d2Escape contained
 
 hi def link d2StringUnquoted     d2String
 hi def link d2StringQuotedSingle d2String
@@ -55,12 +55,12 @@ syn cluster d2String contains=d2StringUnquoted,d2StringQuotedSingle,d2StringQuot
 " d2Key
 " ********************************************************************************
 
-syn region d2KeyUnquoted start=/\%([,{.\->*&(]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\)\@<=[^[:space:]\n#,[\]{}|`$'"\\:.\-<>*&()]/ end=/\%(\s*[\n#,[\]{}|`$'":.\-<>*&()]\)\@=/ contains=@d2EscapeKey
-syn region d2KeyQuotedSingle matchgroup=d2Delimiter start=/\%([,{.\->*&(]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\|'\)\@<='/ end=/'\|\n\@=/  contains=d2LineContinuation
-syn region d2KeyQuotedDouble matchgroup=d2Delimiter start=/\%([,{.\->*&(]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\)\@<="/    end=/"\|\n\@=/  contains=@d2EscapeKey
-syn region d2KeyGroup        matchgroup=d2Delimiter start=/\%([,{.\->*&(]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\)\@<=(/    end=/)\|\n\@=/  contains=d2Error,d2LineContinuation,@d2Key
+syn region d2KeyUnquoted start=/\%([;{.\->*&(]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\)\@<=[^[:space:]\n#;[\]{}|`$'"\\:.\-<>*&()]/ end=/\%(\s*[\n#;[\]{}|`$'":.\-<>*&()]\)\@=/ contains=@d2EscapeKey
+syn region d2KeyQuotedSingle matchgroup=d2Delimiter start=/\%([;{.\->*&(]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\|'\)\@<='/ end=/'\|\n\@=/  contains=d2LineContinuation
+syn region d2KeyQuotedDouble matchgroup=d2Delimiter start=/\%([;{.\->*&(]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\)\@<="/    end=/"\|\n\@=/  contains=@d2EscapeKey
+syn region d2KeyGroup        matchgroup=d2Delimiter start=/\%([;{.\->*&(]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\)\@<=(/    end=/)\|\n\@=/  contains=d2Error,d2LineContinuation,@d2Key
 syn region d2KeyIndex        matchgroup=d2Delimiter start=/)\@<=\[/                                                end=/\]\|\n\@=/ contains=d2Error,d2LineContinuation,@d2Number
-syn match  d2KeyReserved     /\%(type\|layer\|hidden\|class\|label\|tooltip\|style\|icon\|constraint\|near\|opacity\|stroke\|fill\|filled\|stroke\-width\|stroke\-dash\|width\|height\|border\-radius\|source\-arrowhead\|target\-arrowhead\|link\|stroke\-dash\|font\-size\|font\-color\|shadow\|multiple\|3d\|animated\|shape\|imports\|vars\|scenarios\|on_click\|src\|dst\|direction\)\%(\s*[\n#,[\]{}|`$'"\\:.\-<>*&()]\)\@=/
+syn match  d2KeyReserved     /\%(type\|layer\|hidden\|class\|label\|tooltip\|style\|icon\|constraint\|near\|opacity\|stroke\|fill\|filled\|stroke\-width\|stroke\-dash\|width\|height\|border\-radius\|source\-arrowhead\|target\-arrowhead\|link\|stroke\-dash\|font\-size\|font\-color\|shadow\|multiple\|3d\|animated\|shape\|imports\|vars\|scenarios\|on_click\|src\|dst\|direction\)\%(\s*[\n#;[\]{}|`$'"\\:.\-<>*&()]\)\@=/
 
 hi def link d2KeyUnquoted     d2Identifier
 hi def link d2KeyQuotedSingle d2Identifier
@@ -69,11 +69,11 @@ hi def link d2KeyReserved     d2Keyword
 
 syn cluster d2Key contains=d2KeyUnquoted,d2KeyQuotedSingle,d2KeyQuotedDouble,d2KeyGroup,d2KeyIndex,d2KeyReserved
 
-syn region d2KeyEdge       start=/\%([^[:space:]\n#,[\]{}|`$:\-<>]\%(\s*[\-<>]*\\\n\)\?\s*\)\@<=[\-<>]\+/ end=/\%([^\-<>]\|\n\)\@=/
-syn match  d2KeyPeriod     /\%([^[:space:]\n#,[\]{}|`$:.\-<>&]\%(\s*\\\n\)\?\s*\)\@<=\./
+syn region d2KeyEdge       start=/\%([^[:space:]\n#;[\]{}|`$:\-<>]\%(\s*[\-<>]*\\\n\)\?\s*\)\@<=[\-<>]\+/ end=/\%([^\-<>]\|\n\)\@=/
+syn match  d2KeyPeriod     /\%([^[:space:]\n#;[\]{}|`$:.\-<>&]\%(\s*\\\n\)\?\s*\)\@<=\./
 syn match  d2KeyGlob       /\*/
 syn match  d2KeyDoubleGlob /\*\*/
-syn match  d2KeyAmpersand  /\%([,{.]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\)\@<=&/
+syn match  d2KeyAmpersand  /\%([;{.]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\)\@<=&/
 
 hi def link d2KeyEdge       d2Operator
 hi def link d2KeyPeriod     d2Delimiter
@@ -88,7 +88,7 @@ syn cluster d2Key add=d2KeyPeriod,d2KeyGlob,d2KeyDoubleGlob,d2KeyAmpersand,d2Key
 " ********************************************************************************
 
 syn region d2Substitution      matchgroup=d2Operator start=/\${/                                                           end=/}\|\n\@=/ contains=d2Error,@d2Key contained
-syn region d2SubstitutionMerge matchgroup=d2Operator start=/\%([,{[]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\)\@<=\.\.\.\${/ end=/}\|\n\@=/ contains=d2Error,@d2Key
+syn region d2SubstitutionMerge matchgroup=d2Operator start=/\%([;{[]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\)\@<=\.\.\.\${/ end=/}\|\n\@=/ contains=d2Error,@d2Key
 
 " ********************************************************************************
 " @d2Escape
@@ -97,7 +97,7 @@ syn region d2SubstitutionMerge matchgroup=d2Operator start=/\%([,{[]\%(\s*\\\n\)
 " $VIMRUNTIME/syntax/go.vim
 
 syn match d2EscapeError      /\\./                contained
-syn match d2EscapeSpecial    /\\[#,[\]{}|`$'"\\]/ contained
+syn match d2EscapeSpecial    /\\[#;[\]{}|`$'"\\]/ contained
 syn match d2EscapeSpecialKey /\\[:.\-<>*&()]/     contained
 syn match d2EscapeC          /\\[abefnrtv]/       contained
 syn match d2EscapeX          /\\x\x\{2}/          contained
@@ -124,14 +124,14 @@ syn cluster d2EscapeKey contains=@d2Escape,d2EscapeSpecialKey
 " d2Null
 " ********************************************************************************
 
-syn match d2Null /null\%(\s*[\n#,[\]{}|`$'"\\]\)\@=/ contained
+syn match d2Null /null\%(\s*[\n#;[\]{}|`$'"\\]\)\@=/ contained
 hi def link d2Null d2Constant
 
 " ********************************************************************************
 " d2Boolean
 " ********************************************************************************
 
-syn match d2Boolean /\%(true\|false\)\%(\s*[\n#,[\]{}|`$'"\\]\)\@=/ contained
+syn match d2Boolean /\%(true\|false\)\%(\s*[\n#;[\]{}|`$'"\\]\)\@=/ contained
 
 " ********************************************************************************
 " @d2Number
@@ -140,12 +140,12 @@ syn match d2Boolean /\%(true\|false\)\%(\s*[\n#,[\]{}|`$'"\\]\)\@=/ contained
 " https://go.dev/ref/spec#Floating-point_literals
 " $VIMRUNTIME/syntax/go.vim
 
-syn match d2NumberDecimal /[+-]\?[0-9_]*\.\?[0-9_]\+\%([eEpP][+-]\?[0-9_]*\)\?\%(\s*[\n#,[\]{}|`$'"\\]\)\@=/ contained
-syn match d2NumberDecimal /[+-]\?[0-9_]\+\.\?[0-9_]*\%([eEpP][+-]\?[0-9_]*\)\?\%(\s*[\n#,[\]{}|`$'"\\]\)\@=/ contained
+syn match d2NumberDecimal /[+-]\?[0-9_]*\.\?[0-9_]\+\%([eEpP][+-]\?[0-9_]*\)\?\%(\s*[\n#;[\]{}|`$'"\\]\)\@=/ contained
+syn match d2NumberDecimal /[+-]\?[0-9_]\+\.\?[0-9_]*\%([eEpP][+-]\?[0-9_]*\)\?\%(\s*[\n#;[\]{}|`$'"\\]\)\@=/ contained
 
-syn match d2NumberOctal  /[+-]\?0[oO]\?[0-7_]*\%([eEpP][+-]\?[0-9_]*\)\?\%(\s*[\n#,[\]{}|`$'"\\]\)\@=/                        contained
-syn match d2NumberHex    /[+-]\?0[xX][[:xdigit:]_]*\.\?[[:xdigit:]_]*\%([eEpP][+-]\?[0-9_]*\)\?\%(\s*[\n#,[\]{}|`$'"\\]\)\@=/ contained
-syn match d2NumberBinary /[+-]\?0[bB][01_]*\.\?[01_]*\%([eEpP][+-]\?[0-9_]*\)\?\%(\s*[\n#,[\]{}|`$'"\\]\)\@=/                 contained
+syn match d2NumberOctal  /[+-]\?0[oO]\?[0-7_]*\%([eEpP][+-]\?[0-9_]*\)\?\%(\s*[\n#;[\]{}|`$'"\\]\)\@=/                        contained
+syn match d2NumberHex    /[+-]\?0[xX][[:xdigit:]_]*\.\?[[:xdigit:]_]*\%([eEpP][+-]\?[0-9_]*\)\?\%(\s*[\n#;[\]{}|`$'"\\]\)\@=/ contained
+syn match d2NumberBinary /[+-]\?0[bB][01_]*\.\?[01_]*\%([eEpP][+-]\?[0-9_]*\)\?\%(\s*[\n#;[\]{}|`$'"\\]\)\@=/                 contained
 
 syn cluster d2Number contains=d2NumberDecimal,d2NumberOctal,d2NumberHex,d2NumberBinary
 
@@ -158,24 +158,24 @@ hi def link d2NumberBinary  d2Number
 " d2Array
 " ********************************************************************************
 
-syn region d2Array matchgroup=d2Delimiter start=/\%([,:]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\)\@<=\[/ end=/]/ contains=d2Error,d2Comment,d2Comma,d2SubstitutionMerge,@d2Value contained
+syn region d2Array matchgroup=d2Delimiter start=/\%([;:]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\)\@<=\[/ end=/]/ contains=d2Error,d2Comment,d2Semi,d2SubstitutionMerge,@d2Value contained
 
 " ********************************************************************************
 " d2Map
 " ********************************************************************************
 
-syn region d2Map matchgroup=d2Delimiter start=/\%(\%([,:]\|[^[:space:]\]}]\)\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\)\@<={/ end=/}/ contains=TOP contained
+syn region d2Map matchgroup=d2Delimiter start=/\%(\%([;:]\|[^[:space:]\]}]\)\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\)\@<={/ end=/}/ contains=TOP contained
 
 " ********************************************************************************
 " Top
 " ********************************************************************************
 
-syn region d2KeyValue matchgroup=d2Delimiter start=/:/ end=/\%(\s*[\n#,}]\)\@=/ contains=d2Error,d2LineContinuation,@d2Value
+syn region d2KeyValue matchgroup=d2Delimiter start=/:/ end=/\%(\s*[\n#;}]\)\@=/ contains=d2Error,d2LineContinuation,@d2Value
 
 syn cluster d2Value contains=d2Null,d2Boolean,@d2Number,@d2String,d2Array,d2Map
 
-syn match   d2Comma /,/
-hi def link d2Comma d2Delimiter
+syn match   d2Semi /;/
+hi def link d2Semi d2Delimiter
 
 syn match   d2Comment /#.*/ contains=d2Todo
 syn keyword d2Todo TODO FIXME XXX BUG contained
