@@ -129,7 +129,10 @@ endfunction
 
 function! d2#syntax_post() abort
   if index(b:included_syntaxes, 'markdown') != -1
-    syn clear markdownCodeBlock
+    if hlexists('markdownCodeBlock')
+      syn clear markdownCodeBlock
+    endif
+
     syn cluster d2BlockStringMarkdown add=@markdownBlock
   endif
 endfunction
