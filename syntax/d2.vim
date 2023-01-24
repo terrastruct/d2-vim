@@ -55,7 +55,7 @@ syn cluster d2String contains=d2StringUnquoted,d2StringQuotedSingle,d2StringQuot
 " d2Key
 " ********************************************************************************
 
-syn region d2KeyUnquoted start=/\%([;{.\->*&(]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\)\@<=[^[:space:]\n#;[\]{}|`$'"\\:.\<>*&()]/ end=/\%(\s*[\n#;[\]{}|`$'":.\-<>*&()]\)\@=/ contains=@d2EscapeKey
+syn region d2KeyUnquoted start=/[^[:space:]\n#;[\]{}|`$'":.<>*&()]\@=/ end=/\%(\s*[\n#;[\]{}|`$'":.\-<>*&()]\)\@=/ contains=@d2EscapeKey
 syn region d2KeyQuotedSingle matchgroup=d2Delimiter start=/\%([;{.\->*&(]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\|'\)\@<='/ end=/'\|\n\@=/  contains=d2LineContinuation
 syn region d2KeyQuotedDouble matchgroup=d2Delimiter start=/\%([;{.\->*&(]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\)\@<="/    end=/"\|\n\@=/  contains=@d2EscapeKey
 syn region d2KeyGroup        matchgroup=d2Delimiter start=/(/                                                              end=/)/         contains=d2Error,d2LineContinuation,@d2Key
