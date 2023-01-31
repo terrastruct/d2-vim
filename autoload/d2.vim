@@ -30,7 +30,7 @@ endfunction
 
 function! d2#init_block_string_syntaxes() abort
   let b:included_syntaxes = get(b:, 'included_syntaxes', [])
-  if type(g:d2_block_string_syntaxes) != v:t_dict && empty(g:d2_block_string_syntaxes)
+  if exists('g:d2_block_string_syntaxes') == 0 || type(g:d2_block_string_syntaxes) != v:t_dict || empty(g:d2_block_string_syntaxes) == 1
     return
   endif
 
