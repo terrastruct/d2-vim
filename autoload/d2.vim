@@ -128,6 +128,7 @@ function! d2#sync_markdown_fenced_languages() abort
 endfunction
 
 function! d2#syntax_post() abort
+  let b:included_syntaxes = get(b:, 'included_syntaxes', [])
   if index(b:included_syntaxes, 'markdown') != -1
     if hlexists('markdownCodeBlock')
       syn clear markdownCodeBlock
