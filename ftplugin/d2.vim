@@ -36,6 +36,33 @@ augroup d2_ftplugin
   endif
 augroup END
 
+" Validation configuration
+if !exists("g:d2_validate_autosave")
+  let g:d2_validate_autosave = 0
+endif
+
+if !exists("g:d2_validate_command")
+  let g:d2_validate_command = "d2 validate"
+endif
+
+if !exists("g:d2_validate_fail_silently")
+  let g:d2_validate_fail_silently = 0
+endif
+
+if !exists("g:d2_list_type")
+  let g:d2_list_type = "quickfix"
+endif
+
+" Auto validate on save (runs after formatting)
+augroup d2_validate
+  autocmd!
+  if get(g:, "d2_validate_autosave", 0)
+    autocmd BufWritePost *.d2 call d2#validate#Validate()
+  endif
+augroup END
+
 " Commands
 command! -buffer D2Fmt call d2#fmt#Format()
 command! -buffer D2FmtToggle call d2#fmt#ToggleAutoFormat()
+command! -buffer D2Validate call d2#validate#Validate()
+command! -buffer D2ValidateToggle call d2#validate#ToggleAutoValidate()

@@ -43,6 +43,27 @@ Commands:
 - `:D2Fmt` - Format current buffer
 - `:D2FmtToggle` - Toggle auto format on save
 
+### Validation
+D2 files can be validated using `d2 validate`. This can be configured:
+
+```vim
+" Enable/disable auto validate on save (default: 0)
+let g:d2_validate_autosave = 0
+
+" Customize the validate command (default: "d2 validate")
+let g:d2_validate_command = "d2 validate"
+
+" Use quickfix or locationlist for errors (default: "quickfix")
+let g:d2_list_type = "quickfix"
+
+" Fail silently when validation fails (default: 0)
+let g:d2_validate_fail_silently = 0
+```
+
+Commands:
+- `:D2Validate` - Validate current buffer
+- `:D2ValidateToggle` - Toggle auto validate on save
+
 ## Documentation
 
 See `:help d2-vim` or [./doc/d2.txt](./doc/d2.txt) for options and additional documentation.
