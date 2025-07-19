@@ -23,6 +23,26 @@ Plug 'terrastruct/d2-vim'
 }
 ```
 
+## Features
+
+### Auto-formatting
+D2 files are automatically formatted on save using `d2 fmt`. This can be configured:
+
+```vim
+" Enable/disable auto format on save (default: 1)
+let g:d2_fmt_autosave = 1
+
+" Customize the format command (default: "d2 fmt")
+let g:d2_fmt_command = "d2 fmt"
+
+" Fail silently when formatting fails (default: 0)
+let g:d2_fmt_fail_silently = 0
+```
+
+Commands:
+- `:D2Fmt` - Format current buffer
+- `:D2FmtToggle` - Toggle auto format on save
+
 ## Documentation
 
 See `:help d2-vim` or [./doc/d2.txt](./doc/d2.txt) for options and additional documentation.
