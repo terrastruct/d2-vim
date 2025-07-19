@@ -64,16 +64,24 @@ Commands:
 - `:D2Validate` - Validate current buffer
 - `:D2ValidateToggle` - Toggle auto validate on save
 
+### Playground
+Open D2 files in the online playground at [play.d2lang.com](https://play.d2lang.com). This
+is useful for an ad-hoc way of sharing your d2 diagram with someone.
+
+```vim
+" Customize the play command (default: "d2 play")
+let g:d2_play_command = "d2 play"
+
+" Set the theme ID (default: 0)
+let g:d2_play_theme = 0
+
+" Enable sketch mode (default: 0)
+let g:d2_play_sketch = 0
+```
+
+Commands:
+- `:D2Play` - Open current buffer in D2 playground
+
 ## Documentation
 
 See `:help d2-vim` or [./doc/d2.txt](./doc/d2.txt) for options and additional documentation.
-
-```d2
-x -> y
-
-# d2-vim can syntax highlight nested markdown correctly.
-y: |`md
-  # d2-vim
-  The Vim plugin for [D2](https://d2lang.com) files.
-`|
-```

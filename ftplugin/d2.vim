@@ -53,6 +53,19 @@ if !exists("g:d2_list_type")
   let g:d2_list_type = "quickfix"
 endif
 
+" Play configuration
+if !exists("g:d2_play_command")
+  let g:d2_play_command = "d2 play"
+endif
+
+if !exists("g:d2_play_theme")
+  let g:d2_play_theme = 0
+endif
+
+if !exists("g:d2_play_sketch")
+  let g:d2_play_sketch = 0
+endif
+
 " Auto validate on save (runs after formatting)
 augroup d2_validate
   autocmd!
@@ -66,3 +79,4 @@ command! -buffer D2Fmt call d2#fmt#Format()
 command! -buffer D2FmtToggle call d2#fmt#ToggleAutoFormat()
 command! -buffer D2Validate call d2#validate#Validate()
 command! -buffer D2ValidateToggle call d2#validate#ToggleAutoValidate()
+command! -buffer D2Play call d2#play#Play()
