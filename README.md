@@ -10,9 +10,17 @@ The Vim plugin for [D2](https://d2lang.com) files.
 
 ## Install
 
+### Using [vim-plug](https://github.com/junegunn/vim-plug)
 ```vim
-" Using https://github.com/junegunn/vim-plug
 Plug 'terrastruct/d2-vim'
+```
+
+### Using [lazy.nvim](https://github.com/folke/lazy.nvim)
+```lua
+{
+  "terrastruct/d2-vim",
+  ft = { "d2" },
+}
 ```
 
 ## Documentation
