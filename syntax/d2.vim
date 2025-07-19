@@ -60,7 +60,7 @@ syn region d2KeyQuotedSingle matchgroup=d2Delimiter start=/\%([;{.\->*&(]\%(\s*\
 syn region d2KeyQuotedDouble matchgroup=d2Delimiter start=/\%([;{.\->*&(]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\)\@<="/    end=/"\|\n\@=/  contains=@d2EscapeKey
 syn region d2KeyGroup        matchgroup=d2Delimiter start=/(/                                                              end=/)/         contains=d2Error,d2LineContinuation,@d2Key
 syn region d2KeyIndex        matchgroup=d2Delimiter start=/)\@<=\[/                                                        end=/\]\|\n\@=/ contains=d2Error,d2LineContinuation,@d2Number
-syn match  d2KeyReserved     /\%(type\|layer\|hidden\|class\|label\|tooltip\|style\|icon\|constraint\|near\|opacity\|stroke\|fill\|filled\|stroke\-width\|stroke\-dash\|width\|height\|border\-radius\|source\-arrowhead\|target\-arrowhead\|link\|stroke\-dash\|font\-size\|font\-color\|shadow\|multiple\|3d\|animated\|shape\|imports\|vars\|scenarios\|on_click\|src\|dst\|direction\)\%(\s*[\n#;[\]{}|`$'"\\:.\-<>*&()]\)\@=/
+syn match  d2KeyReserved     /\%(grid\-gap\|vertical\-gap\|horizontal\-gap\|classes\|direction\|grid\-columns\|grid\-rows\|text\-transform\|shape\|layers\|steps\|tooltip\|font\|bold\|italic\|underline\|top\|left\|icon\|constraint\|near\|opacity\|stroke\|fill\-pattern\|fill\|filled\|stroke\-width\|width\|height\|double\-border\|border\-radius\|source\-arrowhead\|target\-arrowhead\|link\|stroke\-dash\|font\-size\|font\-color\|shadow\|multiple\|3d\|animated\|class\|label\|style\|vars\|scenarios\|on_click\|src\|dst\)\%(\s*[\n#;[\]{}|`$'"\\:.\-<>*&()]\)\@=/
 
 hi def link d2KeyUnquoted     d2Identifier
 hi def link d2KeyQuotedSingle d2Identifier
@@ -89,6 +89,9 @@ syn cluster d2Key add=d2KeyPeriod,d2KeyGlob,d2KeyDoubleGlob,d2KeyAmpersand,d2Key
 
 syn region d2Substitution      matchgroup=d2Operator start=/\${/                                                           end=/}\|\n\@=/ contains=d2Error,@d2Key contained
 syn region d2SubstitutionMerge matchgroup=d2Operator start=/\%([;{[]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\)\@<=\.\.\.\${/ end=/}\|\n\@=/ contains=d2Error,@d2Key
+syn region d2SpreadSubstitution matchgroup=d2Operator start=/\.\.\.\${/ end=/}\|\n\@=/ contains=d2Error,@d2Key
+syn match  d2SpreadImport       /\.\.\.@[^[:space:]\n#;[\]{}|`$'"\\:\-<>*&()]*/
+syn match  d2Import             /@[^[:space:]\n#;[\]{}|`$'"\\:\-<>*&()]*/
 
 " ********************************************************************************
 " @d2Escape
@@ -158,7 +161,7 @@ hi def link d2NumberBinary  d2Number
 " d2Array
 " ********************************************************************************
 
-syn region d2Array matchgroup=d2Delimiter start=/\%([;:]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\)\@<=\[/ end=/]/ contains=d2Error,d2Comment,d2Semi,d2SubstitutionMerge,@d2Value contained
+syn region d2Array matchgroup=d2Delimiter start=/\%([;:]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\)\@<=\[/ end=/]/ contains=d2Error,d2Comment,d2Semi,d2SubstitutionMerge,d2SpreadSubstitution,d2SpreadImport,d2Import,@d2Value contained
 
 " ********************************************************************************
 " d2Map
@@ -178,6 +181,7 @@ syn match   d2Semi /;/
 hi def link d2Semi d2Delimiter
 
 syn match   d2Comment /#.*/ contains=d2Todo
+syn region  d2CommentBlock matchgroup=d2Delimiter start=/"""/ end=/"""/ contains=d2Todo
 syn keyword d2Todo TODO FIXME XXX BUG contained
 
 " ********************************************************************************
@@ -188,6 +192,7 @@ syn keyword d2Todo TODO FIXME XXX BUG contained
 hi def link d2Error Error
 
 hi def link d2Comment Comment
+hi def link d2CommentBlock Comment
 
 hi def link d2Constant Constant
 hi def link d2String   String
@@ -198,6 +203,8 @@ hi def link d2Identifier Identifier
 
 " Statement
 hi def link d2Operator Operator
+hi def link d2SpreadImport Operator
+hi def link d2Import Operator
 hi def link d2Keyword  Keyword
 
 " Special
