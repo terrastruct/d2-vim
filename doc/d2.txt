@@ -6,7 +6,8 @@
 CONTENTS                                                          *d2-contents*
 
 1. Introduction               (|d2-intro|)
-2. Settings                   (|d2-settings|)
+2. Commands                   (|d2-commands|)
+3. Settings                   (|d2-settings|)
 
 ==============================================================================
 INTRO                                                                *d2-intro*
@@ -16,7 +17,72 @@ The Vim plugin for .d2 files.
 See https://d2lang.com
 
 ==============================================================================
+COMMANDS                                                          *d2-commands*
+
+:D2Fmt                                                                  *:D2Fmt*
+  Format the current buffer using `d2 fmt`. This modifies the buffer content
+  to follow D2's standard formatting conventions.
+
+:D2FmtToggle                                                      *:D2FmtToggle*
+  Toggle automatic formatting on save. When enabled, |:D2Fmt| is called
+  automatically before each save operation.
+
+:D2Validate                                                          *:D2Validate*
+  Validate the current buffer using `d2 validate`. This checks for syntax
+  errors and populates the quickfix or location list with any issues found.
+  Does not modify the buffer.
+
+:D2ValidateToggle                                              *:D2ValidateToggle*
+  Toggle automatic validation on save. When enabled, |:D2Validate| is called
+  automatically after each save operation.
+
+:D2Play                                                              *:D2Play*
+  Open the current buffer in the D2 online playground at play.d2lang.com.
+  This creates a shareable link for your diagram.
+
+==============================================================================
 SETTINGS                                                          *d2-settings*
+
+                                                           *g:d2_fmt_autosave*
+Enable or disable automatic formatting on save.
+Default: 1 (enabled)
+
+                                                             *g:d2_fmt_command*
+Customize the command used for formatting.
+Default: "d2 fmt"
+
+                                                       *g:d2_fmt_fail_silently*
+Control whether formatting errors are displayed.
+Default: 0 (show errors)
+
+                                                      *g:d2_validate_autosave*
+Enable or disable automatic validation on save.
+Default: 0 (disabled)
+
+                                                        *g:d2_validate_command*
+Customize the command used for validation.
+Default: "d2 validate"
+
+                                                  *g:d2_validate_fail_silently*
+Control whether validation errors are displayed.
+Default: 0 (show errors)
+
+                                                             *g:d2_list_type*
+Choose between quickfix and location list for displaying validation errors.
+Options: "quickfix" or "locationlist"
+Default: "quickfix"
+
+                                                           *g:d2_play_command*
+Customize the command used for playground.
+Default: "d2 play"
+
+                                                              *g:d2_play_theme*
+Set the theme ID for the playground.
+Default: 0
+
+                                                             *g:d2_play_sketch*
+Enable sketch mode for the playground (hand-drawn appearance).
+Default: 0 (disabled)
 
                                                    *g:d2_block_string_syntaxes*
 
