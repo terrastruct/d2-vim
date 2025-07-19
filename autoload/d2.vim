@@ -63,7 +63,7 @@ function! d2#syn_block_string(syntax, tag) abort
   " See nested-markdown-block-string-test for extend and keepend. We don't want parents or
   " children matching on our end pattern unless they too have extend and keepend set. i.e
   " recursive block strings.
-  exe 'syn region '.l:contained_group.' matchgroup=d2BlockStringDelimiter start=/|\z(`\+\)'.a:tag.'[\n[:space:]]/ end=/`\@<!\z1|/ contained '.l:contains.' extend keepend'
+  exe 'syn region '.l:contained_group.' matchgroup=d2BlockStringDelimiter start=/|'.a:tag.'\s*$/ end=/^|/ contained '.l:contains.' extend keepend'
   exe 'syn cluster d2BlockString add='.l:contained_group
 endfunction
 
