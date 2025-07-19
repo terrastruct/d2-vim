@@ -116,7 +116,7 @@ hi def link d2EscapeC          d2Escape
 hi def link d2EscapeX          d2Escape
 hi def link d2EscapeOctal      d2Escape
 hi def link d2EscapeU          d2Escape
-hi def link d2EscapeBigU       dd2cape
+hi def link d2EscapeBigU       d2Escape
 hi def link d2LineContinuation d2Escape
 hi def link d2Escape           d2SpecialChar
 

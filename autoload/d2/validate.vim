@@ -30,10 +30,9 @@ function! d2#validate#Validate() abort
   let l:errors = []
   let l:filename = expand('%:p')
   
-  " D2 error format: "err: <path>: line:col: message" or "err: line:col: message"
+  " D2 error format: "err: [path:] line:col: message"
   for l:line in split(l:output, '\n')
     if l:line =~ '^err:'
-      " Try to match format with explicit error prefix
       let l:parts = matchlist(l:line, '^err:\s*\%(.*:\s*\)\?\(\d\+\):\(\d\+\):\s*\(.*\)')
       if len(l:parts) > 3
         call add(l:errors, {
