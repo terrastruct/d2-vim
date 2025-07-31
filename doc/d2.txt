@@ -57,6 +57,15 @@ COMMANDS                                                          *d2-commands*
   Toggle automatic ASCII rendering on save. When enabled, the ASCII preview
   window is automatically updated after each save operation.
 
+:D2PreviewSelection                                          *:D2PreviewSelection*
+  Render the currently selected text as ASCII. This is a global command that
+  works in any file. Use in visual mode to preview D2 code snippets from
+  anywhere - markdown files, documentation, code comments, etc.
+
+<Leader>d2                                                            *<Leader>d2*
+  Visual mode mapping to render selected text as ASCII. Equivalent to
+  |:D2PreviewSelection|. Works in any file type.
+
 ==============================================================================
 ASCII PREVIEW                                                *d2-ascii-preview*
 

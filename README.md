@@ -81,6 +81,10 @@ let g:d2_ascii_mode = "extended"
 - `:D2PreviewToggle` - Toggle ASCII preview window on/off
 - `:D2PreviewUpdate` - Update existing preview window with current content
 - `:D2AsciiToggle` - Toggle automatic ASCII rendering on save
+- `:D2PreviewSelection` - Render selected text as ASCII (works in any file)
+
+#### Keybindings
+- `<Leader>d2` - Render selected text as ASCII (visual mode)
 
 ### Auto-formatting
 D2 files are automatically formatted on save using `d2 fmt`. This can be configured:

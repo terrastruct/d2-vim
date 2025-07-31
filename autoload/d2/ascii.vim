@@ -115,3 +115,51 @@ function! d2#ascii#ToggleAutoRender() abort
     echo 'Auto ASCII render disabled'
   endif
 endfunction
+
+" d2#ascii#PreviewSelection renders selected D2 code as ASCII
+function! d2#ascii#PreviewSelection() range abort
+  let l:tmpname = tempname() . '.d2'
+  let l:output_file = tempname() . '.txt'
+  
+  " Get selected text
+  let l:lines = getline(a:firstline, a:lastline)
+  
+  " Write selected content to temp file
+  call writefile(l:lines, l:tmpname)
+  
+  let l:cmd = get(g:, 'd2_ascii_command', 'd2')
+  
+  " Add ascii-mode flag if not extended
+  let l:ascii_mode = get(g:, 'd2_ascii_mode', 'extended')
+  if l:ascii_mode == 'standard'
+    let l:cmd .= ' --ascii-mode=standard'
+  endif
+  
+  let l:cmd .= ' ' . shellescape(l:tmpname) . ' ' . shellescape(l:output_file)
+  
+  let l:result = system(l:cmd)
+  let l:exit_code = v:shell_error
+  
+  call delete(l:tmpname)
+  
+  if l:exit_code != 0
+    echohl ErrorMsg
+    echo 'd2 selection render failed: ' . substitute(l:result, '\n$', '', '')
+    echohl None
+    if filereadable(l:output_file)
+      call delete(l:output_file)
+    endif
+    return
+  endif
+  
+  if !filereadable(l:output_file)
+    echohl ErrorMsg
+    echo 'd2 selection render failed: output file not created'
+    echohl None
+    return
+  endif
+  
+  call s:show_ascii_preview(l:output_file)
+  call delete(l:output_file)
+endfunction
+
