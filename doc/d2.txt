@@ -63,8 +63,9 @@ COMMANDS                                                          *d2-commands*
   anywhere - markdown files, documentation, code comments, etc.
 
 <Leader>d2                                                            *<Leader>d2*
-  Visual mode mapping to render selected text as ASCII. Equivalent to
-  |:D2PreviewSelection|. Works in any file type.
+  Context-sensitive mapping:
+  - Visual mode (any file): Render selected text as ASCII (|:D2PreviewSelection|)
+  - Normal mode (D2 files): Render entire buffer as ASCII (|:D2Preview|)
 
 ==============================================================================
 ASCII PREVIEW                                                *d2-ascii-preview*

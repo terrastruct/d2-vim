@@ -84,7 +84,8 @@ let g:d2_ascii_mode = "extended"
 - `:D2PreviewSelection` - Render selected text as ASCII (works in any file)
 
 #### Keybindings
-- `<Leader>d2` - Render selected text as ASCII (visual mode)
+- `<Leader>d2` - Render selected text as ASCII (visual mode, any file)
+- `<Leader>d2` - Render entire buffer as ASCII (normal mode, D2 files only)
 
 ### Auto-formatting
 D2 files are automatically formatted on save using `d2 fmt`. This can be configured:

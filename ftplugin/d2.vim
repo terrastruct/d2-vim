@@ -109,3 +109,6 @@ command! -buffer D2Preview call d2#ascii#Preview()
 command! -buffer D2PreviewToggle call d2#ascii#PreviewToggle()
 command! -buffer D2PreviewUpdate call d2#ascii#PreviewUpdate()
 command! -buffer D2AsciiToggle call d2#ascii#ToggleAutoRender()
+
+" Normal mode mapping for D2 files - preview entire buffer
+nnoremap <buffer> <Leader>d2 :D2Preview<CR>
