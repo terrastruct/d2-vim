@@ -8,6 +8,16 @@ The Vim plugin for [D2](https://d2lang.com) files.
 <br />
 </div>
 
+## Table of Contents
+
+- [Install](#install)
+- [Features](#features)
+  - [ASCII Preview](#ascii-preview)
+  - [Auto-formatting](#auto-formatting)  
+  - [Validation](#validation)
+  - [Playground](#playground)
+- [Documentation](#documentation)
+
 ## Install
 
 ### Using [vim-plug](https://github.com/junegunn/vim-plug)
@@ -24,6 +34,53 @@ Plug 'terrastruct/d2-vim'
 ```
 
 ## Features
+
+### ASCII Preview
+Render D2 diagrams as ASCII text for quick preview without leaving Vim. This feature provides a live preview of your diagrams in text format, perfect for:
+- Quick previews without external tools
+- Working in terminal environments
+- Sharing diagrams in text-only contexts
+- Understanding diagram structure while editing
+
+The ASCII preview opens in a vertical split pane and automatically updates when you save your D2 file.
+
+#### Configuration
+
+```vim
+" Enable/disable auto ASCII render on save (default: 1)
+let g:d2_ascii_autorender = 1
+
+" Customize the ASCII render command (default: "d2")
+let g:d2_ascii_command = "d2"
+
+" Set preview window width for vertical split (default: half screen)
+let g:d2_ascii_preview_width = &columns / 2
+
+" Set ASCII mode: "extended" (Unicode) or "standard" (basic ASCII)
+let g:d2_ascii_mode = "extended"
+```
+
+#### ASCII Modes
+
+**Extended Mode (default)**: Uses Unicode box-drawing characters for cleaner, more readable output:
+```
+┌─────────────┐     ┌──────────────┐
+│    user     │────▶│   server     │
+└─────────────┘     └──────────────┘
+```
+
+**Standard Mode**: Uses basic ASCII characters for maximum compatibility:
+```
++-------------+     +--------------+
+|    user     |---->|   server     |
++-------------+     +--------------+
+```
+
+#### Commands
+- `:D2Preview` - Render current buffer as ASCII in preview window
+- `:D2PreviewToggle` - Toggle ASCII preview window on/off
+- `:D2PreviewUpdate` - Update existing preview window with current content
+- `:D2AsciiToggle` - Toggle automatic ASCII rendering on save
 
 ### Auto-formatting
 D2 files are automatically formatted on save using `d2 fmt`. This can be configured:

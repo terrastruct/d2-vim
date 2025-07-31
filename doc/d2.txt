@@ -7,7 +7,8 @@ CONTENTS                                                          *d2-contents*
 
 1. Introduction               (|d2-intro|)
 2. Commands                   (|d2-commands|)
-3. Settings                   (|d2-settings|)
+3. ASCII Preview              (|d2-ascii-preview|)
+4. Settings                   (|d2-settings|)
 
 ==============================================================================
 INTRO                                                                *d2-intro*
@@ -39,6 +40,53 @@ COMMANDS                                                          *d2-commands*
 :D2Play                                                              *:D2Play*
   Open the current buffer in the D2 online playground at play.d2lang.com.
   This creates a shareable link for your diagram.
+
+:D2Preview                                                        *:D2Preview*
+  Render the current buffer as ASCII text and display it in a preview window.
+  Uses `d2 input.d2 output.txt` to generate the ASCII representation.
+
+:D2PreviewToggle                                              *:D2PreviewToggle*
+  Toggle the ASCII preview window. If the preview is currently open, close it.
+  If closed, open a new preview with the current buffer's ASCII render.
+
+:D2PreviewUpdate                                              *:D2PreviewUpdate*
+  Update the existing ASCII preview window with the current buffer content.
+  Only works if a preview window is already open.
+
+:D2AsciiToggle                                                *:D2AsciiToggle*
+  Toggle automatic ASCII rendering on save. When enabled, the ASCII preview
+  window is automatically updated after each save operation.
+
+==============================================================================
+ASCII PREVIEW                                                *d2-ascii-preview*
+
+The ASCII preview feature renders D2 diagrams as text in a vertical split pane
+within Vim. This provides a live preview of your diagrams without requiring
+external tools or graphics support.
+
+Use cases:
+- Quick previews during development
+- Working in terminal-only environments  
+- Sharing diagrams in text-only contexts
+- Understanding diagram structure while editing
+
+The preview window automatically updates when you save your D2 file (if
+|g:d2_ascii_autorender| is enabled, which is the default).
+
+ASCII MODES                                                   *d2-ascii-modes*
+
+D2 supports two ASCII rendering modes:
+
+Extended Mode (default):
+  Uses Unicode box-drawing characters for cleaner output. Produces diagrams
+  with smooth lines and proper corners using characters like ┌─┐│└┘.
+
+Standard Mode:
+  Uses basic ASCII characters for maximum compatibility. Produces diagrams
+  using only standard ASCII characters like +---|.
+
+The mode is controlled by |g:d2_ascii_mode|. When set to "standard", the
+--ascii-mode=standard flag is passed to the d2 command.
 
 ==============================================================================
 SETTINGS                                                          *d2-settings*
@@ -83,6 +131,23 @@ Default: 0
                                                              *g:d2_play_sketch*
 Enable sketch mode for the playground (hand-drawn appearance).
 Default: 0 (disabled)
+
+                                                          *g:d2_ascii_command*
+Customize the command used for ASCII rendering.
+Default: "d2"
+
+                                                     *g:d2_ascii_preview_width*
+Set the width of the ASCII preview window in columns (vertical split).
+Default: half the screen width (&columns / 2)
+
+                                                        *g:d2_ascii_autorender*
+Enable or disable automatic ASCII rendering on save.
+Default: 1 (enabled)
+
+                                                             *g:d2_ascii_mode*
+Set the ASCII rendering mode. Options: "extended" or "standard".
+Extended uses Unicode box-drawing characters, standard uses basic ASCII.
+Default: "extended"
 
                                                    *g:d2_block_string_syntaxes*
 
