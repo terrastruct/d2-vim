@@ -87,9 +87,7 @@ function! s:show_ascii_preview(output_file) abort
   " Remove the empty first line
   1delete
   
-  " Make it read-only and go back to original window
-  setlocal readonly
-  setlocal nomodifiable
+  " Go back to original window
   wincmd p
 endfunction
 
