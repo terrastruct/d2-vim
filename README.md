@@ -8,6 +8,16 @@ The Vim plugin for [D2](https://d2lang.com) files.
 <br />
 </div>
 
+## Table of Contents
+
+- [Install](#install)
+- [Features](#features)
+  - [ASCII Preview](#ascii-preview)
+  - [Auto-formatting](#auto-formatting)
+  - [Validation](#validation)
+  - [Playground](#playground)
+- [Documentation](#documentation)
+
 ## Install
 
 ### Using [vim-plug](https://github.com/junegunn/vim-plug)
@@ -24,6 +34,76 @@ Plug 'terrastruct/d2-vim'
 ```
 
 ## Features
+
+### ASCII Preview
+
+**Requirements:** D2 version 0.7.1 or higher is required for ASCII features.
+
+Render D2 diagrams as ASCII text for quick preview without leaving Vim. This feature provides a live preview of your diagrams in text format, perfect for:
+- Quick previews without external tools
+- Working in terminal environments
+- Sharing diagrams in text-only contexts
+- Understanding diagram structure while editing
+
+The ASCII preview opens in a vertical split pane and automatically updates when you save your D2 file.
+
+#### Demos
+
+**Preview**: Open a `.d2` file, press `<Leader>d2` to open up preview pane, upon save, the ascii
+re-renders.
+
+![ASCII Preview Demo](assets/preview.gif)
+
+**Replace**: Open any file (here we have a Go file), comment some d2 code, select it in visual mode, press `<Leader>rd2` to replace the d2 code with an ASCII diagram.
+
+![Replace Demo](assets/replace.gif)
+
+#### Configuration
+
+```vim
+" Enable/disable auto ASCII render on save (default: 1)
+let g:d2_ascii_autorender = 1
+
+" Customize the ASCII render command (default: "d2")
+let g:d2_ascii_command = "d2"
+
+" Set preview window width for vertical split (default: half screen)
+let g:d2_ascii_preview_width = &columns / 2
+
+" Set ASCII mode: "extended" (Unicode) or "standard" (basic ASCII)
+let g:d2_ascii_mode = "extended"
+```
+
+#### ASCII Modes
+
+**Extended Mode (default)**: Uses Unicode box-drawing characters for cleaner, more readable output:
+```
+┌─────────────┐     ┌──────────────┐
+│    user     │────▶│   server     │
+└─────────────┘     └──────────────┘
+```
+
+**Standard Mode**: Uses basic ASCII characters for maximum compatibility:
+```
++-------------+     +--------------+
+|    user     |---->|   server     |
++-------------+     +--------------+
+```
+
+#### Commands
+- `:D2Preview` - Render current buffer as ASCII in preview window
+- `:D2PreviewToggle` - Toggle ASCII preview window on/off
+- `:D2PreviewUpdate` - Update existing preview window with current content
+- `:D2PreviewCopy` - Copy ASCII preview content to clipboard and yank register
+- `:D2PreviewSelection` - Render selected text as ASCII (works in any file)
+- `:D2ReplaceSelection` - Replace selected D2 code with ASCII render (works in any file)
+- `:D2AsciiToggle` - Toggle automatic ASCII rendering on save
+
+#### Keybindings
+- `<Leader>d2` - Render selected text as ASCII (visual mode, any file)
+- `<Leader>d2` - Render entire buffer as ASCII (normal mode, D2 files only)
+- `<Leader>rd2` - Replace selected D2 code with ASCII render (visual mode, any file)
+- `<Leader>yd2` - Copy ASCII preview content to clipboard and yank register (normal mode, any file)
 
 ### Auto-formatting
 D2 files are automatically formatted on save using `d2 fmt`. This can be configured:
