@@ -83,12 +83,14 @@ let g:d2_ascii_mode = "extended"
 - `:D2PreviewToggle` - Toggle ASCII preview window on/off
 - `:D2PreviewUpdate` - Update existing preview window with current content
 - `:D2PreviewCopy` - Copy ASCII preview content to clipboard and yank register
-- `:D2AsciiToggle` - Toggle automatic ASCII rendering on save
 - `:D2PreviewSelection` - Render selected text as ASCII (works in any file)
+- `:D2ReplaceSelection` - Replace selected D2 code with ASCII render (works in any file)
+- `:D2AsciiToggle` - Toggle automatic ASCII rendering on save
 
 #### Keybindings
 - `<Leader>d2` - Render selected text as ASCII (visual mode, any file)
 - `<Leader>d2` - Render entire buffer as ASCII (normal mode, D2 files only)
+- `<Leader>rd2` - Replace selected D2 code with ASCII render (visual mode, any file)
 - `<Leader>yd2` - Copy ASCII preview content to clipboard and yank register (normal mode, any file)
 
 ### Auto-formatting

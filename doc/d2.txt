@@ -62,6 +62,11 @@ COMMANDS                                                          *d2-commands*
   works in any file. Use in visual mode to preview D2 code snippets from
   anywhere - markdown files, documentation, code comments, etc.
 
+:D2ReplaceSelection                                          *:D2ReplaceSelection*
+  Replace the currently selected D2 code with its ASCII render. This is a 
+  global command that works in any file. Use in visual mode to convert D2 
+  code directly to ASCII text in place.
+
 :D2PreviewCopy                                                    *:D2PreviewCopy*
   Copy the content of the ASCII preview window to both the system clipboard
   and Vim's yank register. This allows pasting with both 'p' (yank register)
@@ -71,6 +76,11 @@ COMMANDS                                                          *d2-commands*
   Context-sensitive mapping:
   - Visual mode (any file): Render selected text as ASCII (|:D2PreviewSelection|)
   - Normal mode (D2 files): Render entire buffer as ASCII (|:D2Preview|)
+
+<Leader>rd2                                                          *<Leader>rd2*
+  Replace selected D2 code with ASCII render (|:D2ReplaceSelection|).
+  Available in visual mode for any file. Permanently replaces the selected
+  text with the ASCII diagram output.
 
 <Leader>yd2                                                          *<Leader>yd2*
   Copy ASCII preview content to clipboard and yank register (|:D2PreviewCopy|).
