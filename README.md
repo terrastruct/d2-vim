@@ -36,6 +36,9 @@ Plug 'terrastruct/d2-vim'
 ## Features
 
 ### ASCII Preview
+
+**Requirements:** D2 version 0.7.1 or higher is required for ASCII features.
+
 Render D2 diagrams as ASCII text for quick preview without leaving Vim. This feature provides a live preview of your diagrams in text format, perfect for:
 - Quick previews without external tools
 - Working in terminal environments
@@ -54,8 +57,6 @@ re-renders.
 **Replace**: Open any file (here we have a Go file), comment some d2 code, select it in visual mode, press `<Leader>rd2` to replace the d2 code with an ASCII diagram.
 
 ![Replace Demo](assets/replace.gif)
-
-**Requirements:** D2 version 0.7.1 or higher is required for ASCII output features.
 
 #### Configuration
 
