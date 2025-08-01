@@ -62,10 +62,19 @@ COMMANDS                                                          *d2-commands*
   works in any file. Use in visual mode to preview D2 code snippets from
   anywhere - markdown files, documentation, code comments, etc.
 
+:D2PreviewCopy                                                    *:D2PreviewCopy*
+  Copy the content of the ASCII preview window to both the system clipboard
+  and Vim's yank register. This allows pasting with both 'p' (yank register)
+  and Ctrl+V (system clipboard). Only works when a preview window is open.
+
 <Leader>d2                                                            *<Leader>d2*
   Context-sensitive mapping:
   - Visual mode (any file): Render selected text as ASCII (|:D2PreviewSelection|)
   - Normal mode (D2 files): Render entire buffer as ASCII (|:D2Preview|)
+
+<Leader>yd2                                                          *<Leader>yd2*
+  Copy ASCII preview content to clipboard and yank register (|:D2PreviewCopy|).
+  Available in normal mode for any file. Requires an open preview window.
 
 ==============================================================================
 ASCII PREVIEW                                                *d2-ascii-preview*

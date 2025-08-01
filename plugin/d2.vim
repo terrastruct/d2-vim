@@ -14,5 +14,11 @@ augroup END
 " Global command for D2 selection preview (works in any file)
 command! -range D2PreviewSelection <line1>,<line2>call d2#ascii#PreviewSelection()
 
+" Global command for copying ASCII preview (works in any file)
+command! D2PreviewCopy call d2#ascii#CopyPreview()
+
 " Global mapping for D2 selection preview
 vnoremap <Leader>d2 :D2PreviewSelection<CR>
+
+" Global mapping for copying ASCII preview to clipboard and yank register
+nnoremap <Leader>yd2 :D2PreviewCopy<CR>

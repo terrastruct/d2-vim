@@ -165,6 +165,36 @@ function! d2#ascii#ToggleAutoRender() abort
   endif
 endfunction
 
+" d2#ascii#CopyPreview copies the ASCII preview window content to clipboard
+function! d2#ascii#CopyPreview() abort
+  if !s:preview_window_exists()
+    echohl ErrorMsg
+    echo 'No ASCII preview window open'
+    echohl None
+    return
+  endif
+  
+  let l:current_win = winnr()
+  let l:preview_winnr = bufwinnr('D2_ASCII_PREVIEW')
+  
+  " Switch to preview window
+  execute l:preview_winnr . 'wincmd w'
+  
+  " Get all lines from the preview buffer
+  let l:lines = getline(1, '$')
+  let l:content = join(l:lines, "\n")
+  
+  " Copy to clipboard and yank register
+  let @+ = l:content
+  let @* = l:content
+  let @" = l:content
+  
+  " Switch back to original window
+  execute l:current_win . 'wincmd w'
+  
+  echo 'ASCII preview copied to clipboard'
+endfunction
+
 " d2#ascii#PreviewSelection renders selected D2 code as ASCII
 function! d2#ascii#PreviewSelection() range abort
   let l:version_check = s:check_d2_version()
