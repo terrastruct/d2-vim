@@ -95,6 +95,8 @@ let g:d2_ascii_mode = "extended"
 - `<Leader>rd2` - Replace selected D2 code with ASCII render (visual mode, any file)
 - `<Leader>yd2` - Copy ASCII preview content to clipboard and yank register (normal mode, any file)
 
+![Replace Demo](replace.gif)
+
 ### Auto-formatting
 D2 files are automatically formatted on save using `d2 fmt`. This can be configured:
 
