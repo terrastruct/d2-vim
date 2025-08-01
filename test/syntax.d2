@@ -27,12 +27,12 @@ double_quote_escapes: "\"damdkslamadkls\" dmasldkasl"
 
 # nested-markdown-block-string-test
 x -> y
-y: |md
+y: |||md
   # d2-vim
   The Vim plugin for [D2](https://d2lang.com) files.
   ```d2
   x -> y
-  y: |md
+  y: ||md
     # d2-vim
     The Vim plugin for [D2](https://d2lang.com) files.
     ```d2
@@ -42,22 +42,14 @@ y: |md
       The Vim plugin for [D2](https://d2lang.com) files.
     |
     ```
-  |
+  ||
   ```
-|
+|||
 
-x -> y
-y: |d2
-  x -> y
-  y: |d2
-    x -> y
-    y: |d2
-      x -> y
-      y: |d2
-      |
-    |
-  |
-|
+my_code: |`ts
+  declare function getSmallPet(): Fish | Bird;
+  const works = (a > 1) || (b < 2)
+`|
 
 x: |html <html> hello world </html> |
 
@@ -65,10 +57,6 @@ x: [1,2,3]
 x: [first,second,third]
 
 x: ${ok}
-
-oneline: |`'!@#$%^&*()testing bark`|
-oneline: |`'!@#$%^&*()testing bark `|
-oneline_err: |`'!@#$%^&*()testing|bark `|
 
 ok: null less
 ok: something
