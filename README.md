@@ -44,7 +44,7 @@ Render D2 diagrams as ASCII text for quick preview without leaving Vim. This fea
 
 The ASCII preview opens in a vertical split pane and automatically updates when you save your D2 file.
 
-![ASCII Preview Demo](output.gif)
+![ASCII Preview Demo](assets/preview.gif)
 
 **Requirements:** D2 version 0.7.1 or higher is required for ASCII output features.
 
@@ -95,7 +95,7 @@ let g:d2_ascii_mode = "extended"
 - `<Leader>rd2` - Replace selected D2 code with ASCII render (visual mode, any file)
 - `<Leader>yd2` - Copy ASCII preview content to clipboard and yank register (normal mode, any file)
 
-![Replace Demo](replace.gif)
+![Replace Demo](assets/replace.gif)
 
 ### Auto-formatting
 D2 files are automatically formatted on save using `d2 fmt`. This can be configured:
