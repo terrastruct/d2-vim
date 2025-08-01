@@ -16,7 +16,7 @@ imports: mdkalsmdksal
 imports343: mdkalsmdksal
 
 unquoted_str: hello
-unquoted_str_err: hello `mdlkamdskl`
+unquoted_str_err: hello
 unquoted_str_escape: \
   3434343
 single_quote_escapes: 'testing\
@@ -24,43 +24,42 @@ single_quote_escapes: 'testing\
 double_quote_escapes: "\"damdkslamadkls\" dmasldkasl"
 
 'one''two'.three -> xd
-"err""2".3 -> xd
 
 # nested-markdown-block-string-test
 x -> y
-y: |`md
+y: |md
   # d2-vim
   The Vim plugin for [D2](https://d2lang.com) files.
   ```d2
   x -> y
-  y: |`md
+  y: |md
     # d2-vim
     The Vim plugin for [D2](https://d2lang.com) files.
     ```d2
     x -> y
-    y: |`md
+    y: |md
       # d2-vim
       The Vim plugin for [D2](https://d2lang.com) files.
-    `|
+    |
     ```
-  `|
+  |
   ```
-`|
+|
 
 x -> y
-y: |`d2
+y: |d2
   x -> y
-  y: |`d2
+  y: |d2
     x -> y
-    y: |`d2
+    y: |d2
       x -> y
-      y: |`d2
-      `|
-    `|
-  `|
-`|
+      y: |d2
+      |
+    |
+  |
+|
 
-x: |`html <html> hello world </html> `|
+x: |html <html> hello world </html> |
 
 x: [1,2,3]
 x: [first,second,third]
@@ -152,3 +151,17 @@ ok: {
   2 --\
     2-> 2
 }
+
+*: {
+  &shape: person
+  &connected: true
+  style.fill: red
+}
+(** -> **)[*]: {
+  &src: a
+  &dst: c
+  style.stroke: yellow
+}
+a -> b
+a.shape: person
+a -> c

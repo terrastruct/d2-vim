@@ -59,7 +59,7 @@ syn region d2KeyUnquoted start=/[^[:space:]\n#;[\]{}|`$'":.<>*&()]\@=/ end=/\%(\
 syn region d2KeyQuotedSingle matchgroup=d2Delimiter start=/\%([;{.\->*&(]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\|'\)\@<='/ end=/'\|\n\@=/  contains=d2LineContinuation
 syn region d2KeyQuotedDouble matchgroup=d2Delimiter start=/\%([;{.\->*&(]\%(\s*\\\n\)\?\s*\|\\\@<!\n\s*\|\%^\s*\)\@<="/    end=/"\|\n\@=/  contains=@d2EscapeKey
 syn region d2KeyGroup        matchgroup=d2Delimiter start=/(/                                                              end=/)/         contains=d2Error,d2LineContinuation,@d2Key
-syn region d2KeyIndex        matchgroup=d2Delimiter start=/)\@<=\[/                                                        end=/\]\|\n\@=/ contains=d2Error,d2LineContinuation,@d2Number
+syn region d2KeyIndex        matchgroup=d2Delimiter start=/)\@<=\[/                                                        end=/\]\|\n\@=/ contains=d2Error,d2LineContinuation,@d2Number,d2KeyGlob
 syn match  d2KeyReserved     /\%(grid\-gap\|vertical\-gap\|horizontal\-gap\|classes\|direction\|grid\-columns\|grid\-rows\|text\-transform\|shape\|layers\|steps\|tooltip\|font\|bold\|italic\|underline\|top\|left\|icon\|constraint\|near\|opacity\|stroke\|fill\-pattern\|fill\|filled\|stroke\-width\|width\|height\|double\-border\|border\-radius\|source\-arrowhead\|target\-arrowhead\|link\|stroke\-dash\|font\-size\|font\-color\|shadow\|multiple\|3d\|animated\|class\|label\|style\|vars\|scenarios\|on_click\|src\|dst\)\%(\s*[\n#;[\]{}|`$'"\\:.\-<>*&()]\)\@=/
 
 hi def link d2KeyUnquoted     d2Identifier
@@ -69,7 +69,7 @@ hi def link d2KeyReserved     d2Keyword
 
 syn cluster d2Key contains=d2KeyUnquoted,d2KeyQuotedSingle,d2KeyQuotedDouble,d2KeyGroup,d2KeyIndex,d2KeyReserved
 
-syn region d2KeyEdge       start=/\%([^[:space:]\n#;[\]{}|`$:\-<>]\%(\s*[\-<>]*\\\n\)\?\s*\)\@<=[\-<>]\+/ end=/\%([^\-<>]\|\n\)\@=/
+syn region d2KeyEdge       start=/[\-<>]\+/ end=/\%([^\-<>]\|\n\)\@=/
 syn match  d2KeyPeriod     /\%([^[:space:]\n#;[\]{}|`$:.\-<>&]\%(\s*\\\n\)\?\s*\)\@<=\./
 syn match  d2KeyGlob       /\*/
 syn match  d2KeyDoubleGlob /\*\*/
