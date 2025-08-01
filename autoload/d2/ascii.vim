@@ -56,17 +56,17 @@ endfunction
 
 " d2#ascii#Preview renders the current buffer as ASCII in a preview window
 function! d2#ascii#Preview() abort
-  let l:version_check = s:get_d2_version_check()
-  if !l:version_check.valid
-    echohl ErrorMsg
-    if l:version_check.version != 'unknown'
-      echo 'd2 ASCII preview requires version 0.7.1+. Current version: ' . l:version_check.version
-    else
-      echo 'd2 ASCII preview requires version 0.7.1+. ' . l:version_check.error
-    endif
-    echohl None
-    return
-  endif
+  " let l:version_check = s:get_d2_version_check()
+  " if !l:version_check.valid
+  "   echohl ErrorMsg
+  "   if l:version_check.version != 'unknown'
+  "     echo 'd2 ASCII preview requires version 0.7.1+. Current version: ' . l:version_check.version
+  "   else
+  "     echo 'd2 ASCII preview requires version 0.7.1+. ' . l:version_check.error
+  "   endif
+  "   echohl None
+  "   return
+  " endif
   let l:tmpname = tempname() . '.d2'
   let l:output_file = tempname() . '.txt'
   
@@ -215,17 +215,17 @@ endfunction
 
 " d2#ascii#ReplaceSelection replaces selected D2 code with ASCII render
 function! d2#ascii#ReplaceSelection() range abort
-  let l:version_check = s:get_d2_version_check()
-  if !l:version_check.valid
-    echohl ErrorMsg
-    if l:version_check.version != 'unknown'
-      echo 'd2 ASCII replace requires version 0.7.1+. Current version: ' . l:version_check.version
-    else
-      echo 'd2 ASCII replace requires version 0.7.1+. ' . l:version_check.error
-    endif
-    echohl None
-    return
-  endif
+  " let l:version_check = s:get_d2_version_check()
+  " if !l:version_check.valid
+  "   echohl ErrorMsg
+  "   if l:version_check.version != 'unknown'
+  "     echo 'd2 ASCII replace requires version 0.7.1+. Current version: ' . l:version_check.version
+  "   else
+  "     echo 'd2 ASCII replace requires version 0.7.1+. ' . l:version_check.error
+  "   endif
+  "   echohl None
+  "   return
+  " endif
   let l:tmpname = tempname() . '.d2'
   let l:output_file = tempname() . '.txt'
   
@@ -282,17 +282,17 @@ endfunction
 
 " d2#ascii#PreviewSelection renders selected D2 code as ASCII
 function! d2#ascii#PreviewSelection() range abort
-  let l:version_check = s:get_d2_version_check()
-  if !l:version_check.valid
-    echohl ErrorMsg
-    if l:version_check.version != 'unknown'
-      echo 'd2 ASCII preview requires version 0.7.1+. Current version: ' . l:version_check.version
-    else
-      echo 'd2 ASCII preview requires version 0.7.1+. ' . l:version_check.error
-    endif
-    echohl None
-    return
-  endif
+  " let l:version_check = s:get_d2_version_check()
+  " if !l:version_check.valid
+  "   echohl ErrorMsg
+  "   if l:version_check.version != 'unknown'
+  "     echo 'd2 ASCII preview requires version 0.7.1+. Current version: ' . l:version_check.version
+  "   else
+  "     echo 'd2 ASCII preview requires version 0.7.1+. ' . l:version_check.error
+  "   endif
+  "   echohl None
+  "   return
+  " endif
   let l:tmpname = tempname() . '.d2'
   let l:output_file = tempname() . '.txt'
   

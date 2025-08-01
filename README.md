@@ -13,7 +13,7 @@ The Vim plugin for [D2](https://d2lang.com) files.
 - [Install](#install)
 - [Features](#features)
   - [ASCII Preview](#ascii-preview)
-  - [Auto-formatting](#auto-formatting)  
+  - [Auto-formatting](#auto-formatting)
   - [Validation](#validation)
   - [Playground](#playground)
 - [Documentation](#documentation)
@@ -44,7 +44,16 @@ Render D2 diagrams as ASCII text for quick preview without leaving Vim. This fea
 
 The ASCII preview opens in a vertical split pane and automatically updates when you save your D2 file.
 
+#### Demos
+
+**Preview**: Open a `.d2` file, press `<Leader>d2` to open up preview pane, upon save, the ascii
+re-renders.
+
 ![ASCII Preview Demo](assets/preview.gif)
+
+**Replace**: Open any file (here we have a Go file), comment some d2 code, select it in visual mode, press `<Leader>rd2` to replace the d2 code with an ASCII diagram.
+
+![Replace Demo](assets/replace.gif)
 
 **Requirements:** D2 version 0.7.1 or higher is required for ASCII output features.
 
@@ -94,8 +103,6 @@ let g:d2_ascii_mode = "extended"
 - `<Leader>d2` - Render entire buffer as ASCII (normal mode, D2 files only)
 - `<Leader>rd2` - Replace selected D2 code with ASCII render (visual mode, any file)
 - `<Leader>yd2` - Copy ASCII preview content to clipboard and yank register (normal mode, any file)
-
-![Replace Demo](assets/replace.gif)
 
 ### Auto-formatting
 D2 files are automatically formatted on save using `d2 fmt`. This can be configured:
