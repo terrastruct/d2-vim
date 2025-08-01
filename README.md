@@ -44,6 +44,8 @@ Render D2 diagrams as ASCII text for quick preview without leaving Vim. This fea
 
 The ASCII preview opens in a vertical split pane and automatically updates when you save your D2 file.
 
+**Requirements:** D2 version 0.7.1 or higher is required for ASCII output features.
+
 #### Configuration
 
 ```vim

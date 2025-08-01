@@ -74,6 +74,8 @@ The ASCII preview feature renders D2 diagrams as text in a vertical split pane
 within Vim. This provides a live preview of your diagrams without requiring
 external tools or graphics support.
 
+Requirements: D2 version 0.7.1 or higher is required for ASCII output.
+
 Use cases:
 - Quick previews during development
 - Working in terminal-only environments  
