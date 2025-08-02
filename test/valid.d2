@@ -1,0 +1,113 @@
+vars: {
+  d2-config: {
+    theme-id: 3 # terrastruct
+    sketch: true
+    layout-engine: elk
+  }
+  colors: {
+    c2: "#C7F1FF" # light turkuaz
+    c3: "#B5AFF6" # dark purple
+    c4: "#DEE1EB" # gray
+    c5: "#88DCF7" # turkuaz
+    c6: "#E4DBFE" # purple
+  }
+}
+
+bank: {
+  style.fill: white
+  Corporate: {
+    style.fill: white
+    app14506: Data Source\ntco:      100,000\nowner: Lakshmi {
+      style: {
+        fill: '#fce7c6'
+      }
+    }
+  }
+}
+bank.Risk.app14490 -> bank.Equities.app14527: client master
+
+k: {
+  shape: sequence_diagram
+
+  backend_server
+  local_server
+  ssh_server
+  other_server
+
+  启动阶段: {
+    local_server -> ssh_server: ssh_login
+    local_server <- ssh_server: ssh 登录成功
+    local_server -> ssh_server: sftp_copy 辅助转发服务器
+    local_server -> ssh_server: ssh  启动转发服务器
+  }
+}
+
+LangUnits: {
+  style.fill: ${colors.c6}
+  RegexVal: {
+    ds
+  }
+  SQLSelect: {
+    ds
+  }
+  PythonTr: {
+    ds
+  }
+  langunit ₙ: {
+    style.multiple: true
+    style.stroke-dash: 10
+    style.stroke: black
+    style.animated: 1
+    "... ds"
+  }
+}
+
+Dataset UI: {
+  style.fill: ${colors.c4}
+}
+
+*.style.font-size: 22
+*.*.style.font-size: 22
+
+title: |md
+  # Terraform resources (v1.0.0)
+| {near: top-center}
+
+direction: right
+
+github_actions: GitHub Actions {
+  lambda_action: Lambda Action {
+    icon: https://icons.terrastruct.com/dev%2Fgithub.svg
+    style.multiple: true
+  }
+  style: {
+    stroke: blue
+    font-color: purple
+    stroke-dash: 3
+    fill: white
+  }
+}
+
+explanation: |md
+  ```yaml
+  deploy_source:
+    name: deploy lambda from source
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout source code
+        uses: actions/checkout@v3
+      - name: default deploy
+        uses: appleboy/lambda-action@v0.1.7
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          function_name: gorush
+          source: example/index.js
+  ```
+| {near: bottom-center}
+
+task01: {
+  icon: https://icons.terrastruct.com/essentials%2F092-graph%20bar.svg
+  class: [task; multiple]
+}

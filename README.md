@@ -12,6 +12,7 @@ The Vim plugin for [D2](https://d2lang.com) files.
 
 - [Install](#install)
 - [Features](#features)
+  - [Syntax Highlighting](#syntax-highlighting)
   - [ASCII Preview](#ascii-preview)
   - [Auto-formatting](#auto-formatting)
   - [Validation](#validation)
@@ -34,6 +35,16 @@ Plug 'terrastruct/d2-vim'
 ```
 
 ## Features
+
+### Syntax Highlighting
+
+This plugin provides basic syntax highlighting for D2 files. However, for Neovim users, we recommend using the Tree-sitter parser for more accurate syntax highlighting:
+
+**[ravsii/tree-sitter-d2](https://github.com/ravsii/tree-sitter-d2)**
+
+It is well-tested and maintained (thank you @ravsii).
+
+The plugin standalone will still be used as a fallback for regular Vim users or when Tree-sitter is not available.
 
 ### ASCII Preview
 
