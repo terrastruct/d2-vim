@@ -42,7 +42,7 @@ This plugin provides basic syntax highlighting for D2 files. However, for Neovim
 
 **[ravsii/tree-sitter-d2](https://github.com/ravsii/tree-sitter-d2)**
 
-It is well-tested and maintained (thank you @ravsii).
+It is well-tested and maintained (thank you [@ravsii](https://github.com/ravsii)).
 
 The plugin standalone will still be used as a fallback for regular Vim users or when Tree-sitter is not available.
 
