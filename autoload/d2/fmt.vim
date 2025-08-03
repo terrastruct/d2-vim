@@ -10,7 +10,7 @@ function! d2#fmt#Format() abort
   
   " Save current buffer to a temporary file
   let l:tmpname = tempname() . '.d2'
-  silent execute 'write! ' . fnameescape(l:tmpname)
+  silent execute 'keepalt write! ' . fnameescape(l:tmpname)
 
   " Run d2 fmt
   let l:cmd = get(g:, 'd2_fmt_command', 'd2 fmt') . ' ' . shellescape(l:tmpname)
