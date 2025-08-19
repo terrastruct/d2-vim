@@ -100,6 +100,9 @@ function! d2#sync_markdown_fenced_languages() abort
       elseif l:syntax == 'vim'
         " markdown.vim is unable to embed the vim syntax.
         continue
+      elseif l:syntax == 'd2'
+        " Prevent circular dependency: markdown.vim -> d2.vim -> markdown.vim
+        continue
       endif
       let l:line = l:tag
       if l:tag != l:syntax
