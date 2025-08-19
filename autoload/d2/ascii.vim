@@ -232,8 +232,32 @@ function! d2#ascii#ReplaceSelection() range abort
   " Get selected text
   let l:lines = getline(a:firstline, a:lastline)
   
-  " Write selected content to temp file
-  call writefile(l:lines, l:tmpname)
+  " Detect comment prefix from the first line
+  let l:comment_prefix = ''
+  if len(l:lines) > 0
+    let l:first_line = l:lines[0]
+    " Match common comment patterns: //, #, --, *, <!-- etc.
+    let l:prefix_match = matchstr(l:first_line, '^\s*\(//\|#\|--\|\*\|<!--\|/\*\|"\|;\|%\)')
+    if l:prefix_match != ''
+      let l:comment_prefix = l:prefix_match . ' '
+    endif
+  endif
+  
+  " Strip comment prefixes from d2 content for processing
+  let l:clean_lines = []
+  for l:line in l:lines
+    if l:comment_prefix != ''
+      " Remove the comment prefix and any leading spaces after it
+      let l:escaped_prefix = escape(trim(l:comment_prefix), '/.*[]^$~\')
+      let l:clean_line = substitute(l:line, '^\s*' . l:escaped_prefix . '\s*', '', '')
+      call add(l:clean_lines, l:clean_line)
+    else
+      call add(l:clean_lines, l:line)
+    endif
+  endfor
+  
+  " Write clean content to temp file
+  call writefile(l:clean_lines, l:tmpname)
   
   let l:cmd = get(g:, 'd2_ascii_command', 'd2')
   
@@ -270,6 +294,20 @@ function! d2#ascii#ReplaceSelection() range abort
   " Read the ASCII content
   let l:ascii_lines = readfile(l:output_file)
   call delete(l:output_file)
+  
+  " Add comment prefix to ASCII lines if one was detected
+  if l:comment_prefix != ''
+    let l:commented_ascii = []
+    for l:ascii_line in l:ascii_lines
+      if l:ascii_line =~ '^\s*$'
+        " Preserve empty lines as-is (or with just the comment prefix if needed)
+        call add(l:commented_ascii, l:comment_prefix)
+      else
+        call add(l:commented_ascii, l:comment_prefix . l:ascii_line)
+      endif
+    endfor
+    let l:ascii_lines = l:commented_ascii
+  endif
   
   " Replace the selected lines with ASCII content
   silent execute a:firstline . ',' . a:lastline . 'delete'
